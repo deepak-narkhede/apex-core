@@ -1105,6 +1105,13 @@ public class ApexCli
         org.apache.log4j.Logger.getRootLogger(),
         org.apache.log4j.Logger.getLogger(ApexCli.class)
     }) {
+
+     /*
+      * ok now overide the logLevel for logger specified by user through Apex Cli.
+      * Also the same logLevel would be inherited by all appenders related to logger.
+      */
+      logger.setLevel(logLevel);
+
       @SuppressWarnings("unchecked")
       Enumeration<Appender> allAppenders = logger.getAllAppenders();
       while (allAppenders.hasMoreElements()) {
