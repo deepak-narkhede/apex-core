@@ -1034,6 +1034,10 @@ public class LogicalPlan implements Serializable, DAG
       // copy Output port attributes
       for (Map.Entry<OutputPort<?>, OutputPortMeta> entry : operatorMeta.getPortMapping().outPortMap.entrySet()) {
         copyAttributes(getPortMapping().outPortMap.get(entry.getKey()).attributes, entry.getValue().attributes);
+
+        // copy Unifier attributes
+        copyAttributes(getPortMapping().outPortMap.get(entry.getKey()).getUnifierMeta().attributes,
+            entry.getValue().getUnifierMeta().attributes);
       }
     }
 
